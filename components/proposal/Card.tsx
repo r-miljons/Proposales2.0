@@ -2,12 +2,14 @@
 
 import { Card, CardHeader, CardContent, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { NewProposalBadge } from "./NewProposalBadge";
+import { DaysBadge } from "./DaysBadge";
 import { Button } from "@/components/ui/button";
 import { DeclineDialog } from "./DeclineDialog";
-import { AuthenticateDialog } from "@/components/ui/authenticate-dialog";
-import { Clock, Check, X } from "lucide-react";
+import { Clock, Check, X, Circle } from "lucide-react";
 import Image from "next/image";
 import React, { useState } from "react";
+import { useRouter } from 'next/navigation';
 
 interface ProposalCardProps {
   imageUrl: string;
@@ -17,28 +19,22 @@ interface ProposalCardProps {
 }
 
 export const ProposalCard: React.FC<ProposalCardProps> = ({ imageUrl, alt, days, title }) => {
+  const router = useRouter();
   const [showDeclineDialog, setShowDeclineDialog] = useState(false);
-  const [showAuthDialog, setShowAuthDialog] = useState(false);
 
-  const [loading, setLoading] = useState(false);
 
   const handleAccept = () => {
-    setShowAuthDialog(true);
+    router.push('/create');
   };
 
-  const handleAuthContinue = (apiKey: string) => {
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      setShowAuthDialog(false);
-    }, 1000);
-  };
 
   return (
     <>
       <Card className="w-full max-w-md">
         <CardHeader className="p-0">
           <div className="relative w-full h-56 rounded-t-xl overflow-hidden">
+            {/* New Proposal Badge */}
+            <NewProposalBadge />
             <Image
               src={imageUrl}
               alt={alt}
@@ -47,10 +43,7 @@ export const ProposalCard: React.FC<ProposalCardProps> = ({ imageUrl, alt, days,
               fill
               sizes="(max-width: 768px) 100vw, 400px"
             />
-            <Badge className="absolute bottom-3 right-3 flex items-center gap-1 px-3 py-1 bg-white text-black text-base shadow">
-              <Clock className="size-5 mr-1 text-black" aria-hidden="true" />
-              {days} days
-            </Badge>
+            <DaysBadge days={days} />
           </div>
         </CardHeader>
         <CardContent className="pt-4">
@@ -82,15 +75,9 @@ export const ProposalCard: React.FC<ProposalCardProps> = ({ imageUrl, alt, days,
       {showDeclineDialog && (
         <DeclineDialog 
           onClose={() => setShowDeclineDialog(false)}
-          onAccept={() => setShowAuthDialog(true)}
+          onAccept={() => handleAccept()}
         />
       )}
-      <AuthenticateDialog
-        open={showAuthDialog}
-        onOpenChange={setShowAuthDialog}
-        onContinue={handleAuthContinue}
-        loading={loading}
-      />
     </>
   );
 };

@@ -1,15 +1,13 @@
 
 import { TypographyH1, TypographyP } from "@/components/ui/Typography";
-import { Button } from "@/components/ui/button";
 import { ProposalCard } from "@/components/proposal/Card";
-import Link from "next/link";
-import { Rocket } from "lucide-react";
 import Image from "next/image";
+import SiteLayout from "./site-layout";
 
 export default function Home() {
   return (
-    <main className="flex-1 w-full max-w-screen-xl mx-auto p-4 py-20 flex flex-col items-start justify-start min-h-[60vh]">
-      <div className="w-full mt-8 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-start">
+    <SiteLayout>
+    <div className="w-full mt-8 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-start">
         {/* Left side: Description and button */}
         <div className="flex flex-col items-start">
           <TypographyH1 className="!text-left">The Proposales Challenge Project</TypographyH1>
@@ -53,6 +51,6 @@ export default function Home() {
           />
         </div>
       </div>
-    </main>
+    </SiteLayout>
   );
 }

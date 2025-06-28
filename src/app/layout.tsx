@@ -4,12 +4,10 @@ import "./globals.css";
 
 
 export const metadata: Metadata = {
-  title: "Next.js on Firebase App Hosting",
+  title: "Proposales Challenge Project",
   description: "",
 };
 
-import { Header } from "@/components/headers";
-import Footer from "@/components/footer/Footer";
 
 export default function RootLayout({
   children,
@@ -44,11 +42,7 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen flex flex-col bg-background text-primary">
-        <Header />
-        <main className="max-w-screen-xl mx-auto flex-1 flex flex-col p-4 md:px-8 md:py-16 lg:px-16 xl:px-32">
-          {children}
-        </main>
-        <Footer />
+        {children}
       </body>
     </html>
   );
