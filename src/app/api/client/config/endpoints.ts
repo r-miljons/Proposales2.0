@@ -1,31 +1,37 @@
 // src/app/api/config/endpoints.ts
 
-import type { GiftCardOrder, GiftCardVariant } from '@/types/gift-card';
+import type { ContentListParams, ContentListResponse } from '@/types/content';
+import type { Company } from '@/types/company';
+import { getAuth } from '@/app/api/client/utils/getAuth';
 
 import { API_BASE_URL } from './baseUrl';
 
 export const endpoints = {
-  giftCardOrders: {
-    create: {
-      method: "POST",
-      url: `${API_BASE_URL}gift-card-orders`,
-      expectedStatus: 201,
-      requestData: {} as GiftCardOrder,
-      responseData: {} as GiftCardOrder,
+  content: {
+    list: (params?: ContentListParams) => {
+      const auth = getAuth();
+      const searchParams = params
+        ? new URLSearchParams(params as any).toString()
+        : '';
+      return {
+        method: 'GET',
+        url: `${API_BASE_URL}v3/content${searchParams ? `?${searchParams}` : ''}`,
+        expectedStatus: 200,
+        headers: auth?.key ? { Authorization: `Bearer ${auth.key}` } : {},
+        responseData: {} as ContentListResponse,
+      };
     },
   },
-  giftCardVariants: {
-    list: {
-      method: "GET",
-      url: `${API_BASE_URL}gift-card-variants`,
-      expectedStatus: 200,
-      responseData: [] as GiftCardVariant[],
+  companies: {
+    list: () => {
+      const auth = getAuth();
+      return {
+        method: "GET",
+        url: `${API_BASE_URL}v3/companies`,
+        expectedStatus: 200,
+        headers: auth?.key ? { Authorization: `Bearer ${auth.key}` } : {},
+        responseData: [] as Company[],
+      };
     },
-    detail: (id: number | string) => ({
-      method: "GET",
-      url: `${API_BASE_URL}gift-card-variants/${id}`,
-      expectedStatus: 200,
-      responseData: {} as GiftCardVariant,
-    }),
   },
 } as const;

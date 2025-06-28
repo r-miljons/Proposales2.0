@@ -1,0 +1,51 @@
+{
+  "success": true,
+  "data": {
+    "data": [
+      {
+        "created_at": 1672531200,
+        "description": {
+          "en": "This is a sample product description."
+        },
+        "product_id": 101,
+        "variation_id": 201,
+        "title": {
+          "en": "Sample Product 1"
+        },
+        "is_archived": false,
+        "sources": {},
+        "images": [
+          {
+            "uuid": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+            "filename": "sample-image-1.jpg",
+            "mime_type": "image/jpeg",
+            "url": "https://example.com/sample-image-1.jpg",
+            "size": 123456,
+            "height": 800,
+            "width": 600
+          }
+        ],
+        "integration_id": 0,
+        "integration_metadata": {}
+      },
+      {
+        "created_at": 1672617600,
+        "description": {
+          "en": "Another sample product description."
+        },
+        "product_id": 102,
+        "variation_id": 202,
+        "title": {
+          "en": "Sample Product 2"
+        },
+        "is_archived": false,
+        "sources": {},
+        "images": [],
+        "integration_id": 0,
+        "integration_metadata": {}
+      }
+    ]
+  },
+  "message": "Sample content list loaded successfully.",
+  "error": null
+}

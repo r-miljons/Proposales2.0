@@ -11,3 +11,5 @@ Avoid hard-coded colors or styles unless spcified.
 Use the correct alias (@/components/ui) for importing UI components.
 
 When asked to write tests with functions, use Jest and keep the function name the same as the file name.
+
+When creating new ui component files always use the project root components folder.

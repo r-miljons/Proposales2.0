@@ -4,6 +4,7 @@ import { Card, CardHeader, CardContent, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { DeclineDialog } from "./DeclineDialog";
+import { AuthenticateDialog } from "@/components/ui/authenticate-dialog";
 import { Clock, Check, X } from "lucide-react";
 import Image from "next/image";
 import React, { useState } from "react";
@@ -17,6 +18,21 @@ interface ProposalCardProps {
 
 export const ProposalCard: React.FC<ProposalCardProps> = ({ imageUrl, alt, days, title }) => {
   const [showDeclineDialog, setShowDeclineDialog] = useState(false);
+  const [showAuthDialog, setShowAuthDialog] = useState(false);
+
+  const [loading, setLoading] = useState(false);
+
+  const handleAccept = () => {
+    setShowAuthDialog(true);
+  };
+
+  const handleAuthContinue = (apiKey: string) => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      setShowAuthDialog(false);
+    }, 1000);
+  };
 
   return (
     <>
@@ -47,6 +63,7 @@ export const ProposalCard: React.FC<ProposalCardProps> = ({ imageUrl, alt, days,
             variant="default"
             className="flex-1 flex items-center justify-center gap-2 bg-[hsl(var(--success))] text-[hsl(var(--success-foreground))] hover:bg-[hsl(142,71%,35%)] focus-visible:bg-[hsl(142,71%,35%)] transition-colors"
             aria-label="Accept"
+            onClick={handleAccept}
           >
             <Check className="size-5" />
             Accept
@@ -65,6 +82,12 @@ export const ProposalCard: React.FC<ProposalCardProps> = ({ imageUrl, alt, days,
       {showDeclineDialog && (
         <DeclineDialog onClose={() => setShowDeclineDialog(false)} />
       )}
+      <AuthenticateDialog
+        open={showAuthDialog}
+        onOpenChange={setShowAuthDialog}
+        onContinue={handleAuthContinue}
+        loading={loading}
+      />
     </>
   );
 };

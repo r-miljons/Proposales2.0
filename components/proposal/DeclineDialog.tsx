@@ -3,6 +3,7 @@
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Loader2 } from "lucide-react";
 import React from "react";
+import { AuthenticateDialog } from "@/components/ui/authenticate-dialog";
 
 interface DeclineDialogProps {
   onClose?: () => void;
@@ -12,6 +13,8 @@ export const DeclineDialog: React.FC<DeclineDialogProps> = ({ onClose }) => {
   const [open, setOpen] = React.useState(true);
   const [step, setStep] = React.useState<"preparing" | "ready">("preparing");
   const [showAccept, setShowAccept] = React.useState(false);
+  const [showAuthDialog, setShowAuthDialog] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
 
   React.useEffect(() => {
     if (!open) return;
@@ -22,8 +25,17 @@ export const DeclineDialog: React.FC<DeclineDialogProps> = ({ onClose }) => {
   }, [open]);
 
   const handleAccept = () => {
-    setOpen(false);
-    if (onClose) onClose();
+    setShowAuthDialog(true);
+  };
+
+  const handleAuthContinue = (apiKey: string) => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      setShowAuthDialog(false);
+      setOpen(false);
+      if (onClose) onClose();
+    }, 1000);
   };
 
   return (
@@ -60,7 +72,6 @@ export const DeclineDialog: React.FC<DeclineDialogProps> = ({ onClose }) => {
                 type="button"
                 onClick={handleAccept}
                 className={`flex items-center gap-2 px-6 py-2 w-full justify-center rounded-md font-semibold bg-[hsl(var(--success))] text-[hsl(var(--success-foreground))] shadow transition-opacity duration-[10s] ease-in-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[hsl(var(--success))] hover:bg-[hsl(142,71%,35%)] opacity-0 ${showAccept ? 'opacity-100' : ''}`}
-
                 aria-label="Accept"
                 tabIndex={showAccept ? 0 : -1}
                 style={{ pointerEvents: showAccept ? 'auto' : 'none' }}
@@ -69,6 +80,12 @@ export const DeclineDialog: React.FC<DeclineDialogProps> = ({ onClose }) => {
                 Accept
               </button>
             </div>
+            <AuthenticateDialog
+              open={showAuthDialog}
+              onOpenChange={setShowAuthDialog}
+              onContinue={handleAuthContinue}
+              loading={loading}
+            />
           </div>
         )}
       </DialogContent>
