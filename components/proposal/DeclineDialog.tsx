@@ -14,8 +14,6 @@ export const DeclineDialog: React.FC<DeclineDialogProps> = ({ onClose, onAccept 
   const [open, setOpen] = React.useState(true);
   const [step, setStep] = React.useState<"preparing" | "ready">("preparing");
   const [showAccept, setShowAccept] = React.useState(false);
-  const [showAuthDialog, setShowAuthDialog] = React.useState(false);
-  const [loading, setLoading] = React.useState(false);
 
   React.useEffect(() => {
     if (!open) return;
@@ -29,16 +27,6 @@ export const DeclineDialog: React.FC<DeclineDialogProps> = ({ onClose, onAccept 
     setOpen(false);
     if (onClose) onClose();
     if (onAccept) onAccept();
-  };
-
-  const handleAuthContinue = (apiKey: string) => {
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      setShowAuthDialog(false);
-      setOpen(false);
-      if (onClose) onClose();
-    }, 1000);
   };
 
   return (
@@ -63,7 +51,7 @@ export const DeclineDialog: React.FC<DeclineDialogProps> = ({ onClose, onAccept 
             <DialogTitle className="text-center w-full text-lg font-medium mb-2">So you have chosen this path...</DialogTitle>
             <div className="w-full aspect-video max-w-[560px] rounded-lg overflow-hidden shadow-lg mt-2">
               <iframe
-                src="https://www.youtube.com/embed/xvFZjo5PgG0?autoplay=1&controls=0&modestbranding=1&rel=0&fs=1"
+                src="https://www.youtube.com/embed/xvFZjo5PgG0?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&fs=1"
                 title="YouTube video player"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen

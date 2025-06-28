@@ -12,3 +12,12 @@ export const API_ENVIRONMENT = API_ENV as keyof typeof API_BASE_URLS;
 export const API_BASE_URL = API_BASE_URLS[API_ENVIRONMENT];
 export const IS_API_DEV = API_ENVIRONMENT === 'dev';
 export const IS_API_TEST = API_ENVIRONMENT === 'test';
+
+// Centralized Uploadcare base URL with environment support
+const FILE_UPLOAD_BASE_URLS = {
+  dev: 'https://upload.uploadcare.com/base/', // override if needed for local
+  prod: 'https://upload.uploadcare.com/base/',
+  test: 'https://upload.uploadcare.com/base/',
+} as const;
+
+export const FILE_UPLOAD_BASE_URL = FILE_UPLOAD_BASE_URLS[API_ENVIRONMENT];
