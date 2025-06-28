@@ -7,9 +7,10 @@ import { AuthenticateDialog } from "@/components/ui/authenticate-dialog";
 
 interface DeclineDialogProps {
   onClose?: () => void;
+  onAccept?: () => void;
 }
 
-export const DeclineDialog: React.FC<DeclineDialogProps> = ({ onClose }) => {
+export const DeclineDialog: React.FC<DeclineDialogProps> = ({ onClose, onAccept }) => {
   const [open, setOpen] = React.useState(true);
   const [step, setStep] = React.useState<"preparing" | "ready">("preparing");
   const [showAccept, setShowAccept] = React.useState(false);
@@ -25,7 +26,9 @@ export const DeclineDialog: React.FC<DeclineDialogProps> = ({ onClose }) => {
   }, [open]);
 
   const handleAccept = () => {
-    setShowAuthDialog(true);
+    setOpen(false);
+    if (onClose) onClose();
+    if (onAccept) onAccept();
   };
 
   const handleAuthContinue = (apiKey: string) => {
@@ -80,12 +83,7 @@ export const DeclineDialog: React.FC<DeclineDialogProps> = ({ onClose }) => {
                 Accept
               </button>
             </div>
-            <AuthenticateDialog
-              open={showAuthDialog}
-              onOpenChange={setShowAuthDialog}
-              onContinue={handleAuthContinue}
-              loading={loading}
-            />
+
           </div>
         )}
       </DialogContent>

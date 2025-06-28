@@ -1,16 +1,19 @@
-import { endpoints } from '@/app/api/client/config/endpoints';
 import type { Company } from '@/types/company';
+import { addAuthHeader } from '@/app/api/client/utils/addAuthHeader';
 
 export async function fetchCompanies(): Promise<Company[]> {
-  const { method, url, headers } = endpoints.companies.list();
-  const fetchOptions: RequestInit = { method };
-  if (headers && Object.keys(headers).length > 0) {
-    fetchOptions.headers = headers as Record<string, string>;
-  }
-  const response = await fetch(url, fetchOptions);
+  const response = await fetch('/api/companies', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      ...addAuthHeader(),
+    },
+  });
   if (!response.ok) {
     throw new Error(`Failed to fetch companies: ${response.status} ${response.statusText}`);
   }
   const result = await response.json();
-  return result.data as Company[];
+  // If the external API returns a .data property, use it; otherwise, return the whole result.
+  return result.data ? (result.data as Company[]) : (result as Company[]);
 }
+

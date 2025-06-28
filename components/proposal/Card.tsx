@@ -80,7 +80,10 @@ export const ProposalCard: React.FC<ProposalCardProps> = ({ imageUrl, alt, days,
         </div>
       </Card>
       {showDeclineDialog && (
-        <DeclineDialog onClose={() => setShowDeclineDialog(false)} />
+        <DeclineDialog 
+          onClose={() => setShowDeclineDialog(false)}
+          onAccept={() => setShowAuthDialog(true)}
+        />
       )}
       <AuthenticateDialog
         open={showAuthDialog}
