@@ -119,7 +119,7 @@ export const AuthenticateDialog: React.FC<AuthenticateDialogProps> = ({
           </Button>
         </form>
         {verifyFailed && (
-          <Alert variant="destructive" className="mt-3 text-destructive-bright">
+          <Alert variant="destructive" className="text-destructive-bright">
             <AlertCircle className="h-5 w-5" />
             <div>
               <AlertTitle>Authentication Failed</AlertTitle>

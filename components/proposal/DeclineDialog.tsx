@@ -3,7 +3,7 @@
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Loader2 } from "lucide-react";
 import React from "react";
-import { AuthenticateDialog } from "@/components/ui/authenticate-dialog";
+import { AuthenticateDialog } from "@/components/auth/authenticate-dialog";
 
 interface DeclineDialogProps {
   onClose?: () => void;

@@ -1,5 +1,49 @@
 // Types for proposal API
 
+
+  // --- Create Proposal ---
+  
+  /**
+   * Request body for creating a new proposal draft via POST /v3/proposals
+   * Matches the Proposales API spec for creating proposals.
+   */
+  export interface CreateProposalRequest {
+    /** The ID of the Proposales company that the proposal draft should belong to. Now optional for flexibility. */
+    company_id?: number;
+    /** A two-letter ISO 3166-1 alpha-2 language code indicating the language of the proposal. */
+    language: string;
+    /** Background image id and uuid. Can be fetched from a template. */
+    background_image?: ProposalMedia | Record<string, unknown>;
+    /** Background video id and uuid. Can be fetched from a template. */
+    background_video?: ProposalMedia | Record<string, unknown>;
+    /** The proposal title as Markdown. */
+    title_md?: string;
+    /** The proposal description as Markdown. */
+    description_md?: string;
+    /** The recipient of the proposal. Can either be a new recipient, or existing one. */
+    recipient?: ProposalRecipient;
+    /** Proposal metadata. This data is used to fill in variables in the description. */
+    data?: Record<string, unknown>;
+    /**
+     * A list of blocks to be added to the draft. The content_id must be the variation_id of the product in the content library.
+     * Video blocks can also be added, by passing in the video url, title, and setting the block type to video-block.
+     */
+    blocks?: ProposalBlock[];
+    /**
+     * A list of attachments to be added to the draft. Attachments will be fetched from the provided URL and hosted reliably by Proposales.
+     */
+    attachments?: ProposalAttachment[];
+  }
+    
+    export interface CreateProposalResponse {
+      proposal: {
+        uuid: string;
+        url: string;
+      };
+    }
+
+
+
 export interface PatchProposalDataRequest {
     data: Record<string, unknown | null>;
   }
@@ -345,20 +389,3 @@ export interface PatchProposalDataRequest {
     code: string;
     name: string;
   };
-  
-  // --- Create Proposal ---
-  
-  export interface CreateProposalRequest {
-    description_md?: string;
-    recipient?: ProposalRecipient;
-    data?: Record<string, unknown>;
-    blocks?: ProposalBlock[];
-    attachments?: ProposalAttachment[];
-  }
-  
-  export interface CreateProposalResponse {
-    proposal: {
-      uuid: string;
-      url: string;
-    };
-  }
