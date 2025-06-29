@@ -1,6 +1,6 @@
 "use client";
 
-import { AppSidebar } from "@/components/proposal/create/app-sidebar"
+import { CreateProposalSidebar } from "@/components/proposal/create/CreateProposalSidebar"
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -11,13 +11,11 @@ import {
 } from "@/components/ui/breadcrumb"
 import { Separator } from "@/components/ui/separator"
 import {
-  SidebarInset,
   SidebarProvider,
-  SidebarTrigger,
 } from "@/components/ui/sidebar"
-import { TypographySmall } from "@/components/ui/Typography"
+import CreateProposalMainSection from "@/components/proposal/create/CreateProposalMainSection";
 
-import { CreateProposalProvider } from "@/components/CreateProposalStateProvider";
+import { CreateProposalProvider } from "@/components/providers/CreateProposalStateProvider";
 import { CreateProposalRequest } from "@/types/proposal";
 import { getAuth } from "@/app/api/client/utils/getAuth";
 
@@ -38,25 +36,8 @@ export default function Page() {
           "--sidebar-width": "350px",
         } as React.CSSProperties}
       >
-        <AppSidebar />
-        <SidebarInset>
-          <header className="bg-background sticky top-0 flex shrink-0 items-center gap-2 border-b p-4">
-            <SidebarTrigger className="-ml-1" />
-            <Separator
-              orientation="vertical"
-              className="mr-2 data-[orientation=vertical]:h-4"
-            />
-            <TypographySmall>Preview</TypographySmall>
-          </header>
-          <div className="flex flex-1 flex-col gap-4 p-4">
-            {Array.from({ length: 24 }).map((_, index) => (
-              <div
-                key={index}
-                className="bg-muted/50 aspect-video h-12 w-full rounded-lg"
-              />
-            ))}
-          </div>
-        </SidebarInset>
+        <CreateProposalSidebar />
+        <CreateProposalMainSection />
       </SidebarProvider>
     </CreateProposalProvider>
   );

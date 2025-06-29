@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { endpoints } from '@/app/api/client/config/endpoints';
-import { UPLOADCARE_PUB_API_KEY } from '@/app/api/client/config/authKeyLocation';
+import { UPLOADCARE_PUB_API_KEY } from '@/app/api/client/config/keyLocations';
 import type { UploadcareStoreValue } from '@/types/uploadcare';
 import { UPLOADCARE_STORE_VALUES } from '@/types/uploadcare';
 

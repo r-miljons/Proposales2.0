@@ -23,9 +23,9 @@ import { Header } from "../../headers"
 import { ThemeToggle } from "../../ui/ThemeToggle"
 import { SiteLogo } from "../../ui/site-logo"
 import { Separator } from "@/components/ui/separator"
-import { FileUpload } from "@/components/ui/file-upload";
+import { CreateProposalSidebarContent } from "./CreateProposalSidebarContent";
 
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+export function CreateProposalSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
 
   return (
@@ -40,11 +40,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 <ThemeToggle />
             </div>
         </SidebarHeader>
-        <SidebarContent>
-          <div className="p-4">
-            <FileUpload />
-          </div>
-        </SidebarContent>  
+        <CreateProposalSidebarContent />
         <SidebarFooter>
         <NavUser />
         </SidebarFooter>
