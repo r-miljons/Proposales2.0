@@ -11,6 +11,7 @@ import type { AuthData } from '@/types/auth';
 import type { Company } from '@/types/company';
 import { CompanyCard } from '@/components/company/company-card';
 import { TypographySmall, TypographyH4 } from '@/components/ui/Typography';
+import { logIn } from "@/app/api/client/utils/logIn";
 
 interface AuthenticateDialogProps {
   open: boolean;
@@ -32,6 +33,8 @@ export const AuthenticateDialog: React.FC<AuthenticateDialogProps> = ({
   const [lastFailedApiKey, setLastFailedApiKey] = React.useState<string | null>(null);
   const [verifiedCompanies, setVerifiedCompanies] = React.useState<Company[]>([]);
   const [selectedCompanyId, setSelectedCompanyId] = React.useState<number | null>(null);
+  // Local component state for auth data
+  const [authData, setAuthData] = React.useState<AuthData | undefined>(undefined);
 
   React.useEffect(() => {
     if (!open) {
@@ -47,11 +50,10 @@ export const AuthenticateDialog: React.FC<AuthenticateDialogProps> = ({
     setVerifying(true);
     setVerifyFailed(false);
     setVerifiedCompanies([]);
-    // Save only the key (no company) to localStorage
-    const auth: AuthData = { key: apiKey };
-    saveAuth(auth);
+    // Store only in local state, not localStorage
+    setAuthData({ key: apiKey });
     try {
-      const companies = await fetchCompanies();
+      const companies = await fetchCompanies({ key: apiKey });
       setIsVerified(true);
       setVerifying(false);
       setVerifyFailed(false);
@@ -63,9 +65,10 @@ export const AuthenticateDialog: React.FC<AuthenticateDialogProps> = ({
       setVerifyFailed(true);
       setLastFailedApiKey(apiKey);
       setVerifiedCompanies([]);
-      deleteAuth();
+      setAuthData(undefined); // Clear authData on failure
     }
   };
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-sm w-full">
@@ -163,8 +166,8 @@ export const AuthenticateDialog: React.FC<AuthenticateDialogProps> = ({
             onClick={() => {
               if (selectedCompanyId !== null) {
                 const selectedCompany = verifiedCompanies.find(c => c.id === selectedCompanyId);
-                if (selectedCompany) {
-                  saveAuth({ key: apiKey, company: selectedCompany });
+                if (selectedCompany && authData) {
+                  logIn({ ...authData, company: selectedCompany });
                 }
               }
               onContinue(apiKey);

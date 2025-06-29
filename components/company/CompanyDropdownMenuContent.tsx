@@ -6,10 +6,9 @@ import {
   DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Sparkles, BadgeCheck, CreditCard, Bell, LogOut, Building } from "lucide-react";
+import { BadgeCheck, LogOut, Building } from "lucide-react";
 import { AuthenticateDialog } from "@/components/auth/authenticate-dialog";
-import { deleteAuth } from "@/app/api/client/utils/deleteAuth";
-import { TypographyMuted } from "@/components/ui/Typography";
+import { logOut } from "@/app/api/client/utils/logOut";
 import type { Company } from "@/types/company";
 import React from "react";
 
@@ -58,7 +57,7 @@ export const CompanyDropdownMenuContent: React.FC<CompanyDropdownMenuContentProp
         <DropdownMenuSeparator />
         <DropdownMenuItem
           onSelect={() => {
-            deleteAuth();
+            logOut();
             window.location.reload();
           }}
         >

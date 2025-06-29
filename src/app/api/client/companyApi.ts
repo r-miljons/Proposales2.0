@@ -1,12 +1,13 @@
 import type { Company } from '@/types/company';
 import { addAuthHeader } from '@/app/api/client/utils/addAuthHeader';
+import type { AuthData } from '@/types/auth';
 
-export async function fetchCompanies(): Promise<Company[]> {
+export async function fetchCompanies(authData?: AuthData): Promise<Company[]> {
   const response = await fetch('/api/companies', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      ...addAuthHeader(),
+      ...addAuthHeader(authData),
     },
   });
   if (!response.ok) {

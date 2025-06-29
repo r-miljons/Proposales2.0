@@ -2,6 +2,8 @@
 
 import type { ContentListParams, ContentListResponse } from '@/types/content';
 import type { Company } from '@/types/company';
+import type { CreateProposalRequest, CreateProposalResponse } from '@/types/proposal';
+import type { UploadcareDirectUploadPayload, UploadcareDirectUploadResponse } from '@/types/uploadcare';
 import { API_BASE_URL, FILE_UPLOAD_BASE_URL } from './baseUrl';
 
 export const endpoints = {
@@ -28,12 +30,27 @@ export const endpoints = {
       };
     },
   },
+  proposals: {
+    /**
+     * Create a new proposal draft
+     * @param payload - The proposal draft data
+     * @returns { method, url, expectedStatus, body, responseData }
+     */
+    create: (payload: CreateProposalRequest) => {
+      return {
+        method: 'POST',
+        url: `${API_BASE_URL}v3/proposals`,
+        expectedStatus: 200,
+        body: JSON.stringify(payload),
+        responseData: {} as CreateProposalResponse,
+      };
+    },
+  },
   uploadcare: {
     /**
      * Direct upload to Uploadcare (multipart/form-data)
-     * @see https://upload.uploadcare.com/base/
      */
-    directUpload: (payload: import('@/types/uploadcare').UploadcareDirectUploadPayload) => {
+    directUpload: (payload: UploadcareDirectUploadPayload) => {
       const formData = new FormData();
       formData.append('UPLOADCARE_PUB_KEY', payload.UPLOADCARE_PUB_KEY);
       formData.append('UPLOADCARE_STORE', payload.UPLOADCARE_STORE || 'auto');
@@ -51,7 +68,7 @@ export const endpoints = {
         url: FILE_UPLOAD_BASE_URL,
         expectedStatus: 200,
         body: formData,
-        responseData: {} as import('@/types/uploadcare').UploadcareDirectUploadResponse,
+        responseData: {} as UploadcareDirectUploadResponse,
       };
     },
   },

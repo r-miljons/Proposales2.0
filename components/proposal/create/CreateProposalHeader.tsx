@@ -5,7 +5,8 @@ import { Separator } from "@/components/ui/separator";
 import { TypographySmall } from "@/components/ui/Typography";
 import SavedStatusBadge from "./SavedStatusBadge";
 import { Button } from "@/components/ui/button";
-import { UserPlus, Save as SaveIcon, Info } from "lucide-react";
+import { UserPlus, Info } from "lucide-react";
+import CreateProposalSaveButton from "./CreateProposalSaveButton";
 import { useCreateProposalState } from "@/hooks/useCreateProposalState";
 import React from "react";
 
@@ -20,7 +21,7 @@ const CreateProposalHeader: React.FC = () => {
         orientation="vertical"
         className="mr-2 data-[orientation=vertical]:h-4"
       />
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2 hidden md:flex">
         <SavedStatusBadge />
       </div>
       <div className="flex-1" />
@@ -29,10 +30,7 @@ const CreateProposalHeader: React.FC = () => {
           <UserPlus className="mr-2" />
           Add Recipient
         </Button>
-        <Button>
-          <SaveIcon className="mr-2" />
-          Save
-        </Button>
+        <CreateProposalSaveButton />
       </div>
     </header>
   );
