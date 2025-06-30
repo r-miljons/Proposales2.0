@@ -40,7 +40,7 @@ export function ProposalSectionCard({ block, onEdit, onRemove, sortableId }: Pro
     <Card
       ref={setNodeRef}
       style={style}
-      className="w-full p-4 pr-2 group relative min-h-[120px] cursor-text"
+      className="w-full p-4 pr-12 group relative min-h-[120px] cursor-text"
 
       aria-label={`Edit block ${block.title || 'Untitled'}`}
       {...attributes}

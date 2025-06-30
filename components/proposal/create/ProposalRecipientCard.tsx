@@ -5,8 +5,7 @@ import { Button } from "@/components/ui/button";
 import { UserPlus } from "lucide-react";
 import { DefaultCardActions } from "./DefaultCardActions";
 
-import { Card, CardContent, CardTitle, CardDescription } from "@/components/ui/card";
-import { TypographyP } from "@/components/ui/Typography";
+import { Card, CardTitle, CardDescription } from "@/components/ui/card";
 import type { ProposalRecipient } from "@/types/proposal";
 
 import { ProposalRecipientDialog } from "./ProposalRecipientDialog";
@@ -30,7 +29,7 @@ export function ProposalRecipientCard({ recipient, onRecipientChange }: {
   return (
     <>
       {recipient ? (
-        <Card className="w-full p-4 relative min-h-[90px]">
+        <Card className="w-full p-4 pr-12 group relative min-h-[90px] cursor-text">
           <DefaultCardActions<ProposalRecipient>
             item={recipient}
             onEdit={handleEdit}
@@ -40,7 +39,7 @@ export function ProposalRecipientCard({ recipient, onRecipientChange }: {
           <CardTitle>
             {[recipient.first_name, recipient.last_name].filter(Boolean).join(" ") || recipient.company_name || recipient.email || recipient.phone || "Recipient"}
           </CardTitle>
-          <CardDescription>
+          <CardDescription className="mt-2">
             {recipient.company_name && <div>{recipient.company_name}</div>}
             {recipient.email && <div>{recipient.email}</div>}
             {recipient.phone && <div>{recipient.phone}</div>}
