@@ -268,16 +268,14 @@ export interface PatchProposalDataRequest {
     };
   }
   
-  export type ProposalRecipient =
-    | { id: number }
-    | {
-        first_name?: string;
-        last_name?: string;
-        email?: string;
-        phone?: string;
-        company_name?: string;
-        sources?: ProposalRecipientIntegrationSource;
-      };
+  export type ProposalRecipient = {
+  first_name?: string;
+  last_name?: string;
+  email?: string;
+  phone?: string;
+  company_name?: string;
+  sources?: ProposalRecipientIntegrationSource;
+};
   
   // --- PackageSplit and related types ---
   

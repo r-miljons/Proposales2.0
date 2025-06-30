@@ -30,7 +30,18 @@ export function CreateProposalSidebarContent() {
       <form className="space-y-6 p-4">
         <div className="space-y-2">
           <Label className="text-sm">Recipient</Label>
-          <ProposalRecipientCard />
+          <ProposalRecipientCard
+            recipient={proposal.recipient}
+            onRecipientChange={recipient =>
+              setState((prev: CreateProposalState) => ({
+                ...prev,
+                proposal: {
+                  ...prev.proposal,
+                  recipient,
+                },
+              }))
+            }
+          />
         </div>
         <div className="space-y-2">
           <Label htmlFor="proposal-title">Title</Label>
@@ -43,7 +54,7 @@ export function CreateProposalSidebarContent() {
           />
         </div>
         <div className="space-y-2">
-          <Label htmlFor="proposal-description">Description</Label>
+          <Label htmlFor="proposal-description">Intro</Label>
           <Textarea
             id="proposal-description"
             name="description_md"

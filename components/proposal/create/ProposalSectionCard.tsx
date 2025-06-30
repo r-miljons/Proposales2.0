@@ -1,7 +1,10 @@
+"use client";
+
 import * as React from "react";
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Pencil, Trash, GripVertical } from "lucide-react";
+import { DefaultCardActions } from "./DefaultCardActions";
 import type { ProposalBlock } from "@/types/proposal";
 
 import { useSortable } from '@dnd-kit/sortable';
@@ -63,34 +66,7 @@ export function ProposalSectionCard({ block, onEdit, onRemove, sortableId }: Pro
             <CardDescription className="italic text-muted-foreground">No description</CardDescription>
           )}
         </div>
-        <div className="flex flex-col gap-1 absolute right-2 top-2">
-          <Button
-            type="button"
-            variant="ghost"
-            size="sm"
-            className="shrink-0 text-muted-foreground hover:text-primary"
-            onClick={e => {
-              e.stopPropagation();
-              onEdit(block);
-            }}
-            aria-label="Edit block"
-          >
-            <Pencil className="w-4 h-4" />
-          </Button>
-          <Button
-            type="button"
-            variant="ghost"
-            size="sm"
-            className="shrink-0 text-muted-foreground hover:text-destructive"
-            onClick={e => {
-              e.stopPropagation();
-              onRemove(block.uuid);
-            }}
-            aria-label="Remove block"
-          >
-            <Trash className="w-4 h-4" />
-          </Button>
-        </div>
+        <DefaultCardActions<ProposalBlock> item={block} onEdit={onEdit} onRemove={onRemove} />
       </CardHeader>
     </Card>
   );
