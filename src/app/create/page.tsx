@@ -2,15 +2,6 @@
 
 import { CreateProposalSidebar } from "@/components/proposal/create/CreateProposalSidebar"
 import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
-import { Separator } from "@/components/ui/separator"
-import {
   SidebarProvider,
 } from "@/components/ui/sidebar"
 import CreateProposalMainSection from "@/components/proposal/create/CreateProposalMainSection";

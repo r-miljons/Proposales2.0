@@ -84,10 +84,27 @@ export const endpoints = {
       }
       return {
         method: 'POST',
-        url: FILE_UPLOAD_BASE_URL,
+        url: `${FILE_UPLOAD_BASE_URL}/base/`,
         expectedStatus: 200,
         body: formData,
         responseData: {} as UploadcareDirectUploadResponse,
+      };
+    },
+    /**
+     * Get information about an uploaded file from Uploadcare
+     * @param params - Object containing file_id (uuid) and pub_key (string)
+     * @returns { method, url, expectedStatus, responseData }
+     */
+    info: ({ file_id, pub_key }: { file_id: string; pub_key: string }) => {
+      const searchParams = new URLSearchParams({
+        file_id,
+        pub_key,
+      }).toString();
+      return {
+        method: 'GET',
+        url: `${FILE_UPLOAD_BASE_URL}info/?${searchParams}`,
+        expectedStatus: 200,
+        responseData: {} as import('@/types/uploadcare').UploadcareFileInfo
       };
     },
   },

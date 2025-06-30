@@ -23,3 +23,22 @@ export interface UploadcareDirectUploadPayload {
 export interface UploadcareDirectUploadResponse {
   file: string; // UUID
 }
+
+/**
+ * Uploadcare file info response type
+ * Only includes fields present in ContentImage, but allows additional fields
+ */
+export interface UploadcareImageInfo {
+  height?: number;
+  width?: number;
+  [key: string]: unknown;
+}
+
+export interface UploadcareFileInfo {
+  uuid: string;
+  filename?: string;
+  mime_type?: string;
+  size?: number;
+  image_info?: UploadcareImageInfo;
+  [key: string]: unknown; // Allow additional fields from Uploadcare
+}

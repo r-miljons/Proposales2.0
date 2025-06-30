@@ -13,6 +13,6 @@ export async function proposalBlockToContentIds(
   block: ProposalBlock,
   companyId: number
 ): Promise<CreateContentResponse> {
-  const contentRequest = transformProposalBlockToContentRequest(block, companyId);
+  const contentRequest = await transformProposalBlockToContentRequest(block, companyId);
   return saveContentServer(contentRequest);
 }

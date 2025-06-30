@@ -4,6 +4,28 @@ import { UPLOADCARE_PUB_API_KEY } from '@/app/api/client/config/keyLocations';
 import type { UploadcareStoreValue } from '@/types/uploadcare';
 import { UPLOADCARE_STORE_VALUES } from '@/types/uploadcare';
 
+export async function GET(req: NextRequest) {
+  try {
+    const { searchParams } = new URL(req.url);
+    const file_id = searchParams.get('file_id');
+    if (!file_id) {
+      return NextResponse.json({ error: 'Missing file_id parameter.' }, { status: 400 });
+    }
+    const { method, url, expectedStatus } = endpoints.uploadcare.info({
+      file_id,
+      pub_key: UPLOADCARE_PUB_API_KEY,
+    });
+    const apiRes = await fetch(url, { method });
+    if (!apiRes.ok) {
+      return NextResponse.json({ error: `Failed to fetch file info: ${apiRes.status} ${apiRes.statusText}` }, { status: apiRes.status });
+    }
+    const data = await apiRes.json();
+    return NextResponse.json(data);
+  } catch (error) {
+    return NextResponse.json({ error: 'Internal Server Error', details: (error as Error).message }, { status: 500 });
+  }
+}
+
 export async function POST(req: NextRequest) {
   try {
     // Parse multipart form data

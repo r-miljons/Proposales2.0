@@ -43,7 +43,7 @@ export function SectionEditorDialog({ open, onOpenChange, block, onBlockChange }
     setLocalBlock(getDefaultBlock(block));
   }, [block, open]);
 
-  const handleChange = (field: keyof ProposalBlock, value: string) => {
+  const handleChange = (field: keyof ProposalBlock, value: ProposalBlock[keyof ProposalBlock]) => {
     setLocalBlock(prev => ({ ...prev, [field]: value }));
   };
 

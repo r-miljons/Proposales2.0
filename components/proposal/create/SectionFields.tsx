@@ -3,10 +3,11 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import type { ProposalBlock } from "@/types/proposal";
+import { EditAndUploadImages } from "./EditAndUploadImages";
 
 interface SectionFieldsProps {
   block: ProposalBlock;
-  onChange: (field: keyof ProposalBlock, value: string) => void;
+  onChange: (field: keyof ProposalBlock, value: ProposalBlock[keyof ProposalBlock]) => void;
 }
 
 export function SectionFields({ block, onChange }: SectionFieldsProps) {
@@ -31,6 +32,13 @@ export function SectionFields({ block, onChange }: SectionFieldsProps) {
           placeholder="Enter section description"
           rows={3}
         />
+      </div>
+      <div className="space-y-2">
+        <Label htmlFor="block-images">Images</Label>
+          <EditAndUploadImages
+            uuids={block.image_uuids ?? []}
+            onChange={uuids => onChange('image_uuids', uuids)}
+          />
       </div>
     </>
   );

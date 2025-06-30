@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Pencil, Trash, GripVertical } from "lucide-react";
 import { DefaultCardActions } from "./DefaultCardActions";
 import type { ProposalBlock } from "@/types/proposal";
+import ProposalSectionCardImageDisplay from "./ProposalSectionCardImageDisplay";
 
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
@@ -64,6 +65,9 @@ export function ProposalSectionCard({ block, onEdit, onRemove, sortableId }: Pro
             <CardDescription>{block.description}</CardDescription>
           ) : (
             <CardDescription className="italic text-muted-foreground">No description</CardDescription>
+          )}
+          {block.image_uuids && block.image_uuids.length > 0 && (
+            <ProposalSectionCardImageDisplay uuids={block.image_uuids} className="mt-2" />
           )}
         </div>
         <DefaultCardActions<ProposalBlock> item={block} onEdit={onEdit} onRemove={onRemove} />
