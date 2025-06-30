@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Save as SaveIcon } from "lucide-react";
 import React from "react";
-import { saveServerProposal } from '@/app/api/client/utils/saveServerProposal';
+import { saveServerProposal } from '@/app/api/client/utils/proposal/saveProposalServer';
 import { useServerProposalSaveStatus } from '@/hooks/useServerProposalSaveStatus';
 
 import { Loader2 } from "lucide-react";

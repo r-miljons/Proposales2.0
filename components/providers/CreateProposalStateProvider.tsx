@@ -1,8 +1,8 @@
 import React, { createContext, useState, useEffect, ReactNode, Dispatch, SetStateAction } from "react";
 
 import { CreateProposalRequest } from "@/types/proposal";
-import { getDraftProposalLocal } from "@/app/api/client/utils/getDraftProposalLocal";
-import { saveDraftProposalLocal } from "@/app/api/client/utils/saveDraftProposalLocal";
+import { getDraftProposalLocal } from "@/app/api/client/utils/proposal/getDraftProposalLocal";
+import { saveDraftProposalLocal } from "@/app/api/client/utils/proposal/saveDraftProposalLocal";
 
 // Define the shape of the state
 export interface CreateProposalState {

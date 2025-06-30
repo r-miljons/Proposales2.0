@@ -3,7 +3,7 @@
 const API_ENV = process.env.NEXT_PUBLIC_API_ENV || 'prod';
 
 const API_BASE_URLS = {
-  dev: '', // For dev, we'll use local/sample data
+  dev: '', // For dev, we'll use local/sample data (nah)
   prod: 'https://api.proposales.com/', // prod and test the same url, because we test in prod like real men
   test: 'https://api.proposales.com/',
 } as const;

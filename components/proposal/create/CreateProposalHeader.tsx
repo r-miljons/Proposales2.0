@@ -26,10 +26,6 @@ const CreateProposalHeader: React.FC = () => {
       </div>
       <div className="flex-1" />
       <div className="flex items-center gap-2">
-        <Button variant="secondary">
-          <UserPlus className="mr-2" />
-          Add Recipient
-        </Button>
         <CreateProposalSaveButton />
       </div>
     </header>

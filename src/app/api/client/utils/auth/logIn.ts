@@ -1,8 +1,8 @@
 import type { AuthData } from '@/types/auth';
 import { saveAuth } from './saveAuth';
-import { getDraftProposalLocal } from '../getDraftProposalLocal';
-import { saveDraftProposalLocal } from '../saveDraftProposalLocal';
-import { updateServerProposalSaveStatus } from '../updateServerProposalSaveStatus';
+import { getDraftProposalLocal } from '../proposal/getDraftProposalLocal';
+import { saveDraftProposalLocal } from '../proposal/saveDraftProposalLocal';
+import { updateServerProposalSaveStatus } from '../proposal/updateProposalServerSaveStatus';
 
 export function logIn(authData: AuthData): void {
   // Always set isSaved: false for server proposal save status on log in

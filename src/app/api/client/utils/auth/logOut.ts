@@ -1,8 +1,8 @@
 import { deleteAuth } from "./deleteAuth";
 import type { ServerProposalSaveStatus } from '@/types/server-proposal-save-status';
-import { getDraftProposalLocal } from "../getDraftProposalLocal";
-import { saveDraftProposalLocal } from "../saveDraftProposalLocal";
-import { updateServerProposalSaveStatus } from '../updateServerProposalSaveStatus';
+import { getDraftProposalLocal } from "../proposal/getDraftProposalLocal";
+import { saveDraftProposalLocal } from "../proposal/saveDraftProposalLocal";
+import { updateServerProposalSaveStatus } from '../proposal/updateProposalServerSaveStatus';
 
 export function logOut() {
   deleteAuth();

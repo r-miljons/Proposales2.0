@@ -1,6 +1,11 @@
 // src/app/api/config/endpoints.ts
 
-import type { ContentListParams, ContentListResponse } from '@/types/content';
+import type {
+  ContentListParams,
+  ContentListResponse,
+  CreateContentRequest,
+  CreateContentResponse,
+} from '@/types/content';
 import type { Company } from '@/types/company';
 import type { CreateProposalRequest, CreateProposalResponse, PatchProposalDataRequest, PatchProposalDataResponse } from '@/types/proposal';
 import type { UploadcareDirectUploadPayload, UploadcareDirectUploadResponse } from '@/types/uploadcare';
@@ -17,6 +22,20 @@ export const endpoints = {
         url: `${API_BASE_URL}v3/content${searchParams ? `?${searchParams}` : ''}`,
         expectedStatus: 200,
         responseData: {} as ContentListResponse,
+      };
+    },
+    /**
+     * Create a new content item in the library
+     * @param payload - The content data to create
+     * @returns { method, url, expectedStatus, body, responseData }
+     */
+    create: (payload: CreateContentRequest) => {
+      return {
+        method: 'POST',
+        url: `${API_BASE_URL}v3/content`,
+        expectedStatus: 200,
+        body: JSON.stringify(payload),
+        responseData: {} as CreateContentResponse,
       };
     },
   },

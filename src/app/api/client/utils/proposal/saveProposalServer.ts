@@ -1,9 +1,10 @@
 import type { CreateProposalRequest } from '@/types/proposal';
 import type { ServerProposalSaveStatus } from '@/types/server-proposal-save-status';
 import { saveDraftProposalLocal } from './saveDraftProposalLocal';
-import { createProposal } from '../proposalApi';
-import { updateServerProposalSaveStatus } from './updateServerProposalSaveStatus';
+import { createProposal } from '../../proposalApi';
+import { updateServerProposalSaveStatus } from './updateProposalServerSaveStatus';
 import { getDraftProposalLocal } from './getDraftProposalLocal';
+import { enrichProposalBlocksWithContentIds } from './enrichProposalBlocksWithContentIds';
 
 /**
  * Saves a proposal draft locally and attempts to save it on the server.
@@ -23,7 +24,9 @@ export async function saveServerProposal(draft?: CreateProposalRequest): Promise
 
   let status: ServerProposalSaveStatus = { isSaved: false };
   try {
-    const response = await createProposal(proposalDraft);
+    // Enrich proposal blocks with content ids before saving
+    const updatedDraft = await enrichProposalBlocksWithContentIds(proposalDraft);
+    const response = await createProposal(updatedDraft);
     // This ensures that the UI shows that the proposal is saved
     status = { isSaved: true, ...response };
   } catch (error) {

@@ -1,7 +1,7 @@
 import type { CreateProposalRequest } from "@/types/proposal";
 import type { ServerProposalSaveStatus } from '@/types/server-proposal-save-status';
 import { DRAFT_KEY } from "@/app/api/client/config/keyLocations";
-import { updateServerProposalSaveStatus } from './updateServerProposalSaveStatus';
+import { updateServerProposalSaveStatus } from './updateProposalServerSaveStatus';
 
 export function saveDraftProposalLocal(draft: CreateProposalRequest | null) {
   if (typeof window === "undefined") return;
