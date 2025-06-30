@@ -2,12 +2,12 @@
 
 import * as React from "react";
 import { SidebarContent } from "@/components/ui/sidebar";
-import { FileUpload } from "@/components/ui/file-upload";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useCreateProposalState } from "@/hooks/useCreateProposalState";
 import type { CreateProposalState } from "@/components/providers/CreateProposalStateProvider";
+import { ProposalSectionsList } from "./ProposalSectionsList";
 
 export function CreateProposalSidebarContent() {
   const { state, setState } = useCreateProposalState();
@@ -45,6 +45,21 @@ export function CreateProposalSidebarContent() {
             placeholder="Enter proposal description"
             value={proposal.description_md || ""}
             onChange={handleChange}
+          />
+        </div>
+        <div className="space-y-2">
+          <Label>Sections</Label>
+          <ProposalSectionsList
+            blocks={proposal.blocks || []}
+            onBlocksChange={blocks =>
+              setState((prev: CreateProposalState) => ({
+                ...prev,
+                proposal: {
+                  ...prev.proposal,
+                  blocks,
+                },
+              }))
+            }
           />
         </div>
       </form>

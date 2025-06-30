@@ -2,7 +2,7 @@
 
 import type { ContentListParams, ContentListResponse } from '@/types/content';
 import type { Company } from '@/types/company';
-import type { CreateProposalRequest, CreateProposalResponse } from '@/types/proposal';
+import type { CreateProposalRequest, CreateProposalResponse, PatchProposalDataRequest, PatchProposalDataResponse } from '@/types/proposal';
 import type { UploadcareDirectUploadPayload, UploadcareDirectUploadResponse } from '@/types/uploadcare';
 import { API_BASE_URL, FILE_UPLOAD_BASE_URL } from './baseUrl';
 

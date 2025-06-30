@@ -1,5 +1,5 @@
 import type { CreateProposalRequest, CreateProposalResponse } from '@/types/proposal';
-import { addAuthHeader } from '@/app/api/client/utils/addAuthHeader';
+import { addAuthHeader } from '@/app/api/client/utils/auth/addAuthHeader';
 
 export async function createProposal(payload: CreateProposalRequest): Promise<CreateProposalResponse> {
   const response = await fetch('/api/proposals', {

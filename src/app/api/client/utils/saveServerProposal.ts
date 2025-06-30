@@ -25,7 +25,7 @@ export async function saveServerProposal(draft?: CreateProposalRequest): Promise
   try {
     const response = await createProposal(proposalDraft);
     // This ensures that the UI shows that the proposal is saved
-    status = { isSaved: true, proposal: response };
+    status = { isSaved: true, ...response };
   } catch (error) {
     // Optionally, log error or handle it
     status = { isSaved: false };

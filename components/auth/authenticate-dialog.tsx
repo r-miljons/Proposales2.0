@@ -4,14 +4,14 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Key, AlertCircle, Check, RotateCw } from "lucide-react";
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
-import { saveAuth } from '@/app/api/client/utils/saveAuth';
-import { deleteAuth } from '@/app/api/client/utils/deleteAuth';
+import { saveAuth } from '@/app/api/client/utils/auth/saveAuth';
+import { deleteAuth } from '@/app/api/client/utils/auth/deleteAuth';
 import { fetchCompanies } from '@/app/api/client/companyApi';
 import type { AuthData } from '@/types/auth';
 import type { Company } from '@/types/company';
 import { CompanyCard } from '@/components/company/company-card';
 import { TypographySmall, TypographyH4 } from '@/components/ui/Typography';
-import { logIn } from "@/app/api/client/utils/logIn";
+import { logIn } from "@/app/api/client/utils/auth/logIn";
 
 interface AuthenticateDialogProps {
   open: boolean;

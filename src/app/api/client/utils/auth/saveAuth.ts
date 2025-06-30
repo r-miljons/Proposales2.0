@@ -1,4 +1,4 @@
-import { AUTH_KEY } from '../config/keyLocations';
+import { AUTH_KEY } from '../../config/keyLocations';
 import type { AuthData } from '@/types/auth';
 
 export function saveAuth(auth: AuthData): void {

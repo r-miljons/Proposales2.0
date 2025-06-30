@@ -1,15 +1,15 @@
 import { deleteAuth } from "./deleteAuth";
 import type { ServerProposalSaveStatus } from '@/types/server-proposal-save-status';
-import { getDraftProposalLocal } from "./getDraftProposalLocal";
-import { saveDraftProposalLocal } from "./saveDraftProposalLocal";
-import { updateServerProposalSaveStatus } from './updateServerProposalSaveStatus';
+import { getDraftProposalLocal } from "../getDraftProposalLocal";
+import { saveDraftProposalLocal } from "../saveDraftProposalLocal";
+import { updateServerProposalSaveStatus } from '../updateServerProposalSaveStatus';
 
 export function logOut() {
   deleteAuth();
   // Always set isSaved: false for server proposal save status on log out
   // To ensure that the UI doesn't show that the proposal is saved
   if (typeof window !== 'undefined') {
-    updateServerProposalSaveStatus({ isSaved: false });
+    updateServerProposalSaveStatus({ isSaved: false, proposal: undefined });
   }
 
   // since we are logging out company_id is no longer associated with any company.

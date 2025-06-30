@@ -17,7 +17,7 @@ import CreateProposalMainSection from "@/components/proposal/create/CreatePropos
 
 import { CreateProposalProvider } from "@/components/providers/CreateProposalStateProvider";
 import { CreateProposalRequest } from "@/types/proposal";
-import { getAuth } from "@/app/api/client/utils/getAuth";
+import { getAuth } from "@/app/api/client/utils/auth/getAuth";
 
 
 export default function Page() {

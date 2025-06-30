@@ -35,7 +35,7 @@ import { Building } from "lucide-react"
 
 import { TypographyMuted } from "@/components/ui/Typography";
 import { useEffect, useState } from "react";
-import { getAuth } from "@/app/api/client/utils/getAuth";
+import { getAuth } from "@/app/api/client/utils/auth/getAuth";
 import { CompanyDropdownMenuContent } from "@/components/company/CompanyDropdownMenuContent";
 import { Button } from "@/components/ui/button";
 import { LogIn } from "lucide-react";

@@ -8,7 +8,7 @@ import {
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { BadgeCheck, LogOut, Building } from "lucide-react";
 import { AuthenticateDialog } from "@/components/auth/authenticate-dialog";
-import { logOut } from "@/app/api/client/utils/logOut";
+import { logOut } from "@/app/api/client/utils/auth/logOut";
 import type { Company } from "@/types/company";
 import React from "react";
 

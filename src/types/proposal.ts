@@ -42,6 +42,11 @@
       };
     }
 
+    export interface savedProposalResponse {
+        uuid: string;
+        url: string;
+    }
+
 
 
 export interface PatchProposalDataRequest {
@@ -183,7 +188,7 @@ export interface PatchProposalDataRequest {
         metadata: Record<string, unknown>;
       };
     };
-    title?: string;
+    title?: string; // both for product-block and video-block
     type: 'product-block' | 'video-block';
     unit_value_with_discount_with_tax?: number;
     unit_value_with_discount_without_tax?: number;
@@ -191,7 +196,7 @@ export interface PatchProposalDataRequest {
     unit_value_without_discount_without_tax?: number;
     unit?: Unit;
     uuid: string;
-    video_url?: string;
+    video_url?: string; // only for video-block
   }
   
   export interface Powerups {

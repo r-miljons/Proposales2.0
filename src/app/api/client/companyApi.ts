@@ -1,5 +1,5 @@
 import type { Company } from '@/types/company';
-import { addAuthHeader } from '@/app/api/client/utils/addAuthHeader';
+import { addAuthHeader } from '@/app/api/client/utils/auth/addAuthHeader';
 import type { AuthData } from '@/types/auth';
 
 export async function fetchCompanies(authData?: AuthData): Promise<Company[]> {

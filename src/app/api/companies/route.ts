@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { endpoints } from '@/app/api/client/config/endpoints';
-import { cleanHeaders } from '@/app/api/client/utils/cleanHeaders';
+import { cleanHeaders } from '@/app/api/client/utils/auth/cleanHeaders';
 
 export async function GET(req: NextRequest) {
   try {
