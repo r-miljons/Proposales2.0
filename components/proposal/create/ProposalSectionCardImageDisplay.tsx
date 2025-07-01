@@ -3,6 +3,7 @@ import Image from "next/image";
 import { getUploadcareUrl } from "@/lib/uploadcareUrl";
 import { cn } from "@/lib/utils";
 import { TypographySmall } from "@/components/ui/Typography";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 interface ProposalSectionCardImageDisplayProps {
   uuids: string[];
@@ -11,9 +12,11 @@ interface ProposalSectionCardImageDisplayProps {
 
 /**
  * Displays up to 3 images (15x15px each) in a row, with a "+X more" label if there are more.
+ * On mobile, displays up to 2 images.
  */
 export const ProposalSectionCardImageDisplay: React.FC<ProposalSectionCardImageDisplayProps> = ({ uuids, className }) => {
-  const maxDisplay = 3;
+  const isMobile = useIsMobile();
+  const maxDisplay = isMobile ? 2 : 3;
   const displayUuids = uuids.slice(0, maxDisplay);
   const extraCount = uuids.length - maxDisplay;
 

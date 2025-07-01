@@ -3,6 +3,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Key, AlertCircle, Check, RotateCw } from "lucide-react";
+import { ButtonLoading } from "@/components/ui/ButtonLoading";
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
 import { saveAuth } from '@/app/api/client/utils/auth/saveAuth';
 import { deleteAuth } from '@/app/api/client/utils/auth/deleteAuth';
@@ -103,23 +104,25 @@ export const AuthenticateDialog: React.FC<AuthenticateDialogProps> = ({
             className="flex-1"
             data-testid="api-key-input"
           />
-          <Button
-            type="submit"
-            disabled={verifying || !apiKey || isVerified}
-            variant={verifyFailed && !isVerified ? "outline" : undefined}
-            className={verifyFailed && !isVerified ? "shrink-0" : "shrink-0 bg-success text-white hover:bg-success/90 focus:ring-success"}
-            data-testid="verify-btn"
-          >
-            {isVerified && <Check className="w-4 h-4 mr-1" />}
-            {verifyFailed && !isVerified && <RotateCw className="w-4 h-4 mr-1" />}
-            {verifying
-              ? 'Verifying...'
-              : isVerified
-                ? 'Verified'
-                : verifyFailed
-                  ? 'Try Again'
-                  : 'Verify'}
-          </Button>
+          {verifying ? (
+  <ButtonLoading />
+) : (
+  <Button
+    type="submit"
+    disabled={verifying || !apiKey || isVerified}
+    variant={verifyFailed && !isVerified ? "outline" : undefined}
+    className={verifyFailed && !isVerified ? "shrink-0" : "shrink-0 bg-success text-white hover:bg-success/90 focus:ring-success"}
+    data-testid="verify-btn"
+  >
+    {isVerified && <Check className="w-4 h-4 mr-1" />}
+    {verifyFailed && !isVerified && <RotateCw className="w-4 h-4 mr-1" />}
+    {isVerified
+      ? 'Verified'
+      : verifyFailed
+        ? 'Try Again'
+        : 'Verify'}
+  </Button>
+) }
         </form>
         {verifyFailed && (
           <Alert variant="destructive" className="text-destructive-bright">

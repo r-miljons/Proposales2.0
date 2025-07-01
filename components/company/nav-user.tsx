@@ -34,30 +34,17 @@ import type { Company } from "@/types/company"
 import { Building } from "lucide-react"
 
 import { TypographyMuted } from "@/components/ui/Typography";
-import { useEffect, useState } from "react";
-import { getAuth } from "@/app/api/client/utils/auth/getAuth";
+import { useState } from "react";
+import { useAuth } from '@/hooks/useAuth';
 import { CompanyDropdownMenuContent } from "@/components/company/CompanyDropdownMenuContent";
 import { Button } from "@/components/ui/button";
 import { LogIn } from "lucide-react";
 import { AuthenticateDialog } from "@/components/auth/authenticate-dialog";
 
-export function NavUser({
-  company: companyProp,
-}: {
-  company?: Company
-}) {
+export function NavUser() {
   const { isMobile } = useSidebar();
-  const [company, setCompany] = useState<Company | undefined>(companyProp);
-
-  useEffect(() => {
-    if (!companyProp) {
-      const auth = getAuth();
-      if (auth && auth.company) {
-        setCompany(auth.company);
-      }
-    }
-  }, [companyProp]);
-
+  const { state } = useAuth();
+  const company = state.auth?.company;
   const [authDialogOpen, setAuthDialogOpen] = useState(false);
 
   if (!company) {
@@ -75,7 +62,6 @@ export function NavUser({
           onOpenChange={setAuthDialogOpen}
           onContinue={() => {
             setAuthDialogOpen(false);
-            window.location.reload();
           }}
         />
       </>

@@ -58,7 +58,6 @@ export const CompanyDropdownMenuContent: React.FC<CompanyDropdownMenuContentProp
         <DropdownMenuItem
           onSelect={() => {
             logOut();
-            window.location.reload();
           }}
         >
           <LogOut className="mr-2 h-4 w-4" />

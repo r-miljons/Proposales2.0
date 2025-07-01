@@ -9,6 +9,7 @@ import CreateProposalMainSection from "@/components/proposal/create/CreatePropos
 import { CreateProposalProvider } from "@/components/providers/CreateProposalStateProvider";
 import { CreateProposalRequest } from "@/types/proposal";
 import { getAuth } from "@/app/api/client/utils/auth/getAuth";
+import { AuthProvider } from "@/components/providers/AuthProvider";
 
 
 export default function Page() {
@@ -21,15 +22,17 @@ export default function Page() {
 
 
   return (
-    <CreateProposalProvider initialProposal={initialProposal}>
-      <SidebarProvider
-        style={{
-          "--sidebar-width": "350px",
-        } as React.CSSProperties}
-      >
-        <CreateProposalSidebar />
-        <CreateProposalMainSection />
-      </SidebarProvider>
-    </CreateProposalProvider>
+    <AuthProvider initialAuth={auth}>
+      <CreateProposalProvider initialProposal={initialProposal}>
+        <SidebarProvider
+          style={{
+            "--sidebar-width": "350px",
+          } as React.CSSProperties}
+        >
+          <CreateProposalSidebar />
+          <CreateProposalMainSection />
+        </SidebarProvider>
+      </CreateProposalProvider>
+    </AuthProvider>
   );
 }

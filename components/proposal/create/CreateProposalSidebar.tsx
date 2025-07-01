@@ -5,6 +5,7 @@ import { ArchiveX, Command, File, Inbox, Send, Trash2 } from "lucide-react"
 
 import { NavUser } from "@/components/company/nav-user"
 import { Label } from "@/components/ui/label"
+import { Button } from "@/components/ui/button"
 import {
   Sidebar,
   SidebarContent,
@@ -24,6 +25,7 @@ import { ThemeToggle } from "../../ui/ThemeToggle"
 import { SiteLogo } from "../../ui/site-logo"
 import { Separator } from "@/components/ui/separator"
 import { CreateProposalSidebarContent } from "./CreateProposalSidebarContent";
+import { EditProposalWithAICard } from "./EditProposalWithAICard";
 
 export function CreateProposalSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
@@ -42,7 +44,10 @@ export function CreateProposalSidebar({ ...props }: React.ComponentProps<typeof 
         </SidebarHeader>
         <CreateProposalSidebarContent />
         <SidebarFooter>
-        <NavUser />
+          <div className="w-full flex flex-col gap-3">
+            <EditProposalWithAICard />
+            <NavUser />
+          </div>
         </SidebarFooter>
 
     </Sidebar>
