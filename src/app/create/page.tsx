@@ -12,14 +12,28 @@ import { getAuth } from "@/app/api/client/utils/auth/getAuth";
 import { AuthProvider } from "@/components/providers/AuthProvider";
 
 
-export default function Page() {
-  // company_id is fetched from auth if available, otherwise undefined
-  const auth = typeof window !== "undefined" ? getAuth() : null;
-  const initialProposal: CreateProposalRequest = {
-    company_id: auth?.company?.id, // May be undefined
-    language: "en", // Default language
-  };
+import React, { useEffect, useState } from "react";
 
+export default function Page() {
+  const auth = typeof window !== "undefined" ? getAuth() : null;
+  const [initialProposal, setInitialProposal] = useState<CreateProposalRequest | null>(null);
+
+  useEffect(() => {
+    async function fetchInitialProposal() {
+      try {
+        const res = await fetch("/defaultProposal.json");
+        const data = await res.json();
+        setInitialProposal({ ...data, company_id: auth?.company?.id });
+      } catch (error) {
+        // fallback to minimal proposal if fetch fails
+        setInitialProposal({ company_id: auth?.company?.id, language: "en" });
+      }
+    }
+    fetchInitialProposal();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [auth?.company?.id]);
+
+  if (!initialProposal) return null;
 
   return (
     <AuthProvider initialAuth={auth}>

@@ -40,8 +40,6 @@ export function getHeroSection(data?: CreateProposalRequest, company?: Company):
         grid-template-columns:1fr 1fr;
         gap:32px;
         font-size:1.1rem;
-        text-transform:uppercase;
-        letter-spacing:0.03em;
       ">
         ${showPreparedFor ? `<div>
           <span style="color:#888;font-weight:500;">Prepared for:</span><br>
@@ -62,7 +60,6 @@ export function getHeroSection(data?: CreateProposalRequest, company?: Company):
         ${showTitle ? `<div style="
           font-size:2.5rem;
           font-weight:700;
-          letter-spacing:-0.015em;
           margin-bottom:8px;
           line-height:1.1;
           word-break: break-word;
@@ -74,7 +71,6 @@ export function getHeroSection(data?: CreateProposalRequest, company?: Company):
           font-size:1.1rem;
           color:#444;
           margin:32px 0;
-          max-width:70%;
           line-height:1.5;
           word-break: break-word;
           overflow-wrap: break-word;

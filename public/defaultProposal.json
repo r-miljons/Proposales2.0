@@ -1,0 +1,77 @@
+{
+    "language": "en",
+    "title_md": "5-Day Team Building Trip to the Georgian Caucasus Mountains",
+    "description_md": "This proposal outlines a five-day immersive team building experience set in the stunning Georgian Caucasus mountains. The program is designed to foster collaboration, enhance communication skills, and rejuvenate our team through a series of carefully curated activities amid breathtaking natural landscapes. The trip will offer a balance of adventure, relaxation, and structured team exercises to achieve both professional development and stronger interpersonal connections.",
+    "blocks": [
+      {
+        "title": "Objectives",
+        "description": "The primary objectives are to strengthen team cohesion, improve problem-solving abilities, encourage creative thinking, and bolster morale by providing unique shared experiences outside the typical work environment.",
+        "type": "product-block",
+        "language": "en",
+        "uuid": "d43458d7-602d-484b-9884-5bfb7a4c5ba4"
+      },
+      {
+        "title": "Location",
+        "description": "The trip will take place in the heart of the Georgian Caucasus, specifically in the Kazbegi region, renowned for its dramatic mountain vistas, beautiful valleys, and authentic hospitality. The team will be accommodated at a comfortable mountain lodge equipped with modern amenities and meeting spaces.",
+        "language": "en",
+        "type": "product-block",
+        "uuid": "8d703d81-317e-4269-8efc-7e74b9303180",
+        "image_uuids": [
+          "bd231b37-0392-4316-89bd-29f6ea2e265e"
+        ]
+      },
+      {
+        "title": "Itinerary Overview",
+        "description": "Day 1: Arrival, orientation, and welcome dinner. \nDay 2: Guided hiking and interactive team challenges. \nDay 3: Local cultural experience and problem-solving workshop. \nDay 4: Outdoor adventure activities such as rafting or horseback riding followed by evening team reflection. \nDay 5: Closing discussions, feedback session, and departure.",
+        "language": "en",
+        "type": "product-block",
+        "uuid": "6d6ef61b-6494-42dc-9423-abbcd9fa2bbf"
+      },
+      {
+        "title": "Team Building Activities",
+        "description": "Activities include collaborative hiking challenges, group workshops, cultural immersion exercises with local communities, and adrenaline-pumping adventures to promote trust and resilience. Each activity is tailored to the team's goals and led by experienced facilitators.",
+        "language": "en",
+        "type": "product-block",
+        "uuid": "94e12d16-d90a-413e-be4a-14d164d33493",
+        "image_uuids": [
+          "c2c7533f-9264-4ef3-9bf2-6d1360f9016d"
+        ]
+      },
+      {
+        "title": "Logistics and Safety",
+        "description": "Transportation to and from the site, accommodation, meals, and all scheduled activities will be fully managed by the organizing team. Comprehensive safety protocols will be in place, and qualified guides will accompany all outdoor excursions to ensure a secure and enjoyable experience.",
+        "type": "product-block",
+        "language": "en",
+        "uuid": "effd8f50-b4df-46ef-98f9-591b74092124"
+      },
+      {
+        "title": "Expected Outcomes",
+        "description": "By the end of the trip, participants will benefit from improved communication, stronger professional relationships, increased motivation, and valuable insights that translate to enhanced productivity and team performance in the workplace.",
+        "language": "en",
+        "type": "product-block",
+        "uuid": "6ce94828-05e6-4452-9271-3c173eab29dd",
+        "image_uuids": [
+          "0c286590-0291-4da1-a836-f2a963b4fa17"
+        ]
+      },
+      {
+        "title": "Next Steps",
+        "description": "Upon approval, the organizing team will finalize dates, confirm bookings, and share a detailed itinerary and packing recommendations with all participants. Regular updates and a pre-trip briefing will ensure readiness and maximize engagement.",
+        "type": "product-block",
+        "language": "en",
+        "uuid": "395eb923-7d7b-4039-b701-76fec11b9603"
+      }
+    ],
+    "recipient": {
+      "first_name": "Someone",
+      "last_name": "Special",
+      "email": "staff@proposales.com",
+      "phone": "+1235677890",
+      "company_name": "Proposales AB"
+    },
+    "background_image": {
+      "uuid": "1ed81e5a-dde9-470b-87b3-c3ccbf49f9e5",
+      "id": 45353
+    },
+    "company_id": 0
+  }

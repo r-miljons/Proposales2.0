@@ -8,7 +8,12 @@ import { Textarea } from "@/components/ui/textarea";
 import { useCreateProposalState } from "@/hooks/useCreateProposalState";
 import type { CreateProposalState } from "@/components/providers/CreateProposalStateProvider";
 import { ProposalSectionsList } from "./ProposalSectionsList";
+import { BackgroundImageSelector } from "./BackgroundImageSelector";
 import { ProposalRecipientCard } from "./ProposalRecipientCard";
+
+function isProposalMedia(obj: unknown): obj is import("@/types/proposal").ProposalMedia {
+  return !!obj && typeof obj === "object" && "uuid" in obj && typeof (obj as any).uuid === "string";
+}
 
 export function CreateProposalSidebarContent() {
   const { state, setState } = useCreateProposalState();
@@ -62,6 +67,22 @@ export function CreateProposalSidebarContent() {
             value={proposal.description_md || ""}
             onChange={handleChange}
           />
+        </div>
+        <div className="space-y-2">
+          <BackgroundImageSelector
+            label="Main image"
+            value={isProposalMedia(proposal.background_image) ? proposal.background_image : null}
+            onChange={bg =>
+              setState((prev: CreateProposalState) => ({
+                ...prev,
+                proposal: {
+                  ...prev.proposal,
+                  background_image: bg ?? undefined,
+                },
+              }))
+            }
+          />
+
         </div>
         <div className="space-y-2">
           <Label>Sections</Label>
