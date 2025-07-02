@@ -64,6 +64,7 @@ export function CreateProposalSidebarContent() {
             id="proposal-description"
             name="description_md"
             placeholder="Enter proposal description"
+            rows={5}
             value={proposal.description_md || ""}
             onChange={handleChange}
           />

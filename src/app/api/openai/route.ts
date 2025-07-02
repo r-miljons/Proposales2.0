@@ -3,11 +3,11 @@ import openai from '@/lib/openai';
 import type { OpenAIRequest, OpenAIResponse, OpenAIChatMessage } from '@/types/openai';
 
 import { zodTextFormat } from "openai/helpers/zod";
-import { simplifiedProposalTextOnly } from "@/app/api/client/utils/ai";
+import { simplifiedProposalTextOnly } from "@/types/ai";
 import type { ResponseType } from "@/types/ai";
 
 // MODE_SWITCH: Set to true to use fallback schema-in-prompt mode, false for OpenAI structured output parsing
-const USE_SCHEMA_IN_PROMPT_MODE = true;
+const USE_SCHEMA_IN_PROMPT_MODE = false;
 
 export async function POST(req: NextRequest): Promise<NextResponse<OpenAIResponse>> {
   try {

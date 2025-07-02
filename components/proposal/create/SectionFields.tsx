@@ -30,7 +30,7 @@ export function SectionFields({ block, onChange }: SectionFieldsProps) {
           value={block?.description || ''}
           onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => onChange('description', e.target.value)}
           placeholder="Enter section description"
-          rows={3}
+          rows={5}
         />
       </div>
       <div className="space-y-2">

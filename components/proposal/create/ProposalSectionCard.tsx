@@ -49,7 +49,7 @@ export function ProposalSectionCard({ block, onEdit, onRemove, sortableId }: Pro
         {/* Drag handle on the left, absolutely positioned like the button group */}
         <div
           {...listeners}
-          className="flex flex-col gap-1 absolute left-2 top-1/2 -translate-y-1/2 cursor-grab select-none text-muted-foreground hover:text-primary"
+          className="flex flex-col gap-1 absolute left-2 top-1/2 -translate-y-1/2 cursor-grab select-none touch-none text-muted-foreground hover:text-primary"
           aria-label="Drag to reorder"
           tabIndex={0}
           role="button"
